@@ -123,12 +123,24 @@ const ColorList = ({ colors, updateColors, getData }) => {
           </div>
         </form>
       )}
-      {/* <div className="spacer" /> */}
       {/* stretch - build another form here to add a color */}
       <form onSubmit={addColor}>
-        <input name='color' placeholder='Color Name' value={newColor.color} onChange={addColorChangeHandler}/>
-        <input name='hex' placeholder='Hex' value={newColor.code.hex} onChange={addColorHexHandler} />
-        <button>add</button>
+        <legend>add color</legend>
+        <label>
+          color name:
+          <input
+            name='color' value={newColor.color} onChange={addColorChangeHandler}
+          />
+        </label>
+        <label>
+          hex code:
+          <input
+            name='hex' value={newColor.code.hex} onChange={addColorHexHandler}
+          />
+        </label>
+        <div className="button-row">
+          <button type="submit">add</button>
+        </div>
       </form>
     </div>
   );
