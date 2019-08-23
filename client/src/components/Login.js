@@ -10,7 +10,7 @@ const Login = () => {
   })
   
   console.log(loginDetails)
-  
+
   const onChangeHandler = event => {
     setLoginDetails({
       ...loginDetails,
@@ -18,10 +18,21 @@ const Login = () => {
     })
   }
 
+  const onSubmitHandler = event => {
+    event.preventDefault()
+    axios
+      .post('http://localhost:5000/api/login', loginDetails)
+      .then(result => {
+        console.log('✅ axios login result: ', result.data.payload)
+        localStorage.setItem('token', result.data.payload)
+      })
+      .catch(error => console.log('❌ axios login error: ', error))
+  }
+
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <input 
           type='text' 
           name='username' 
@@ -36,7 +47,7 @@ const Login = () => {
           placeholder='Password' 
           onChange={onChangeHandler} 
         />
-        <button>Sign In</button>
+        <button onClick={onSubmitHandler}>Sign In</button>
       </form>
     </>
   );
