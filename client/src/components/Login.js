@@ -25,7 +25,7 @@ const Login = props => {
       .then(result => {
         console.log('✅ axios login result: ', result.data.payload)
         localStorage.setItem('token', result.data.payload)
-        props.history.push("/bubblespage");
+        props.history.push("/bubblepage");
       })
       .catch(error => console.log('❌ axios login error: ', error))
   }
