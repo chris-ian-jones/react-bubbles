@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { axiosWithAuth } from './../utils/axiosWithAuth'
 
 const initialColor = {
@@ -14,8 +14,6 @@ const ColorList = ({ colors, updateColors, getData }) => {
     color: "",
     code: { hex: "" }
   })
-
-  console.log(newColor)
 
   const editColor = color => {
     setEditing(true);

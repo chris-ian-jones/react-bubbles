@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import styled from 'styled-components'
+import 'semantic-ui-css/semantic.min.css'
+import { Input, Button } from 'semantic-ui-react'
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -8,8 +11,6 @@ const Login = props => {
     username: '',
     password: ''
   })
-  
-  console.log(loginDetails)
 
   const onChangeHandler = event => {
     setLoginDetails({
@@ -34,21 +35,21 @@ const Login = props => {
     <>
       <h1>Welcome to the Bubble App!</h1>
       <form onSubmit={onSubmitHandler}>
-        <input 
+        <Input 
           type='text' 
           name='username' 
           value={loginDetails.username} 
           placeholder='Username' 
           onChange={onChangeHandler} 
         />
-        <input 
+        <Input 
           type='text' 
           name='password' 
           value={loginDetails.password} 
           placeholder='Password' 
           onChange={onChangeHandler} 
         />
-        <button onClick={onSubmitHandler}>Sign In</button>
+        <Button onClick={onSubmitHandler}>Sign In</Button>
       </form>
     </>
   );

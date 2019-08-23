@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { axiosWithAuth } from './../utils/axiosWithAuth'
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
+
+import { axiosWithAuth } from './../utils/axiosWithAuth'
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
@@ -19,7 +19,6 @@ const BubblePage = () => {
     })
     .catch(error => console.log('❌ BubblePage axiosWithAuth get colors: ', error))
   }
-
 
   useEffect(() => {
     getData()
