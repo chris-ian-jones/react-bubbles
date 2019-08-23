@@ -59,6 +59,21 @@ const ColorList = ({ colors, updateColors, getData }) => {
     })
   }
 
+  const addColor = event => {
+    event.preventDefault()
+    axiosWithAuth()
+    .post(`http://localhost:5000/api/colors/`, newColor)
+    .then(result => {
+      console.log('✅ ColorList axiosWithAuth add color: ', result)
+      getData()
+      setNewColor({
+        color: "",
+        code: { hex: "" }
+      })
+    })
+    .catch(error => console.log('❌ ColorList axiosWithAuth add color: ', error))
+  };
+
   return (
     <div className="colors-wrap">
       <p>colors</p>
@@ -110,7 +125,7 @@ const ColorList = ({ colors, updateColors, getData }) => {
       )}
       {/* <div className="spacer" /> */}
       {/* stretch - build another form here to add a color */}
-      <form>
+      <form onSubmit={addColor}>
         <input name='color' placeholder='Color Name' value={newColor.color} onChange={addColorChangeHandler}/>
         <input name='hex' placeholder='Hex' value={newColor.code.hex} onChange={addColorHexHandler} />
         <button>add</button>
