@@ -7,7 +7,7 @@ const initialColor = {
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, getData }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -37,7 +37,7 @@ const ColorList = ({ colors, updateColors }) => {
     .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
     .then(result => {
       console.log('✅ ColorList axiosWithAuth edit color: ', result)
-      // setColorList(result.data)
+      getData()
     })
     .catch(error => console.log('❌ ColorList axiosWithAuth edit color: ', error))
   };
